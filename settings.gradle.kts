@@ -21,3 +21,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "PhotoPicker"
 include(":app")
+include(":feature-photos-list-api")
+include(":feature-photos-list-impl")
