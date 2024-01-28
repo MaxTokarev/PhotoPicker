@@ -1,0 +1,12 @@
+CREATE TABLE photo (
+     id TEXT PRIMARY KEY NOT NULL,
+     secret TEXT NOT NULL,
+     server TEXT NOT NULL
+);
+
+selectAll:
+SELECT * FROM photo;
+
+insert:
+INSERT INTO photo(id, secret, server)
+VALUES (?,?,?);

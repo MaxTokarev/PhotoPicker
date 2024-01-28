@@ -6,11 +6,20 @@ plugins {
     alias(libs.plugins.kotlin.ksp)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ktorfit)
+    alias(libs.plugins.sql.delight)
 }
 
 android {
     namespace = "com.android.photo.picker"
     buildFeatures.viewBinding = true
+}
+
+sqldelight {
+    databases {
+        create("PhotosDatabase") {
+            packageName.set("com.android.photo.picker")
+        }
+    }
 }
 
 dependencies {
@@ -24,6 +33,9 @@ dependencies {
 
     implementation(libs.orbit.core)
     implementation(libs.orbit.viewmodel)
+
+    implementation(libs.sql.delight)
+    implementation(libs.sql.delight.coroutines)
 
     implementation(libs.ktor.serialization)
     implementation(libs.ktor.negotiation)
