@@ -1,11 +1,8 @@
 @file:Suppress("UnstableApiUsage")
 
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
-enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
-    includeBuild("build-logic")
-
     repositories {
         google()
         gradlePluginPortal()
@@ -16,12 +13,17 @@ pluginManagement {
 dependencyResolutionManagement {
     repositories {
         google()
-        mavenCentral()
+        gradlePluginPortal()
         maven("https://jitpack.io")
+    }
+
+    versionCatalogs {
+        create("libs") {
+            from(files("../gradle/libs.versions.toml"))
+        }
     }
 }
 
-rootProject.name = "PhotoPicker"
-include(":app")
-include(":modules:feature-photos-list-api")
-include(":modules:feature-photos-list-impl")
+rootProject.name = "build-logic"
+
+include(":convention")
