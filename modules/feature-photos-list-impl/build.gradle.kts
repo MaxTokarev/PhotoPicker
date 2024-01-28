@@ -11,11 +11,14 @@ android {
 }
 
 dependencies {
+    api(project(":modules:feature-photos-list-api"))
     implementation(libs.constraint)
     implementation(libs.material)
     implementation(libs.ktx.fragment)
     implementation(libs.view.binding.delegate)
     implementation(libs.cicerone)
+    implementation(libs.ktorfit)
+    implementation(libs.glide)
 
     implementation(libs.orbit.core)
     implementation(libs.orbit.viewmodel)

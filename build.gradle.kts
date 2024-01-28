@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.kotlin.ksp) apply false
     alias(libs.plugins.hilt) apply false
-    alias(libs.plugins.modules.graph) apply false
+    alias(libs.plugins.ktorfit) apply false
     id("convention.dependency.analysis")
     id("convention.detekt")
 }

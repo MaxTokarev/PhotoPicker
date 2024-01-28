@@ -1,47 +1,45 @@
 package com.android.photo.picker
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.android.photo.picker.ui.theme.PhotoPickerTheme
 
-class MainActivity : ComponentActivity() {
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.fragment.app.FragmentActivity
+import com.android.photo.feature_photos_list_api.FeaturePhotosListApi
+import com.github.terrakok.cicerone.NavigatorHolder
+import com.github.terrakok.cicerone.Replace
+import com.github.terrakok.cicerone.androidx.AppNavigator
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
+@AndroidEntryPoint
+internal class MainActivity : FragmentActivity() {
+
+    @Inject
+    lateinit var navigatorHolder: NavigatorHolder
+
+    @Inject
+    lateinit var photosListApi: FeaturePhotosListApi
+
+    private val navigator = AppNavigator(this, R.id.container)
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
-        setContent {
-            PhotoPickerTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        if (savedInstanceState == null) {
+            navigator.applyCommands(arrayOf(Replace(photosListApi.screen)))
         }
     }
-}
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
+    override fun onResumeFragments() {
+        super.onResumeFragments()
+        navigatorHolder.setNavigator(navigator)
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PhotoPickerTheme {
-        Greeting("Android")
+    override fun onPause() {
+        navigatorHolder.removeNavigator()
+        super.onPause()
     }
 }

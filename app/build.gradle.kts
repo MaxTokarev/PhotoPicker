@@ -12,6 +12,7 @@ dependencies {
 
     implementation(libs.splashScreen)
     implementation(libs.appCompat)
+    implementation(libs.cicerone)
     implementation(libs.material)
     implementation(libs.kotlin.coroutines)
     implementation(libs.timber)
