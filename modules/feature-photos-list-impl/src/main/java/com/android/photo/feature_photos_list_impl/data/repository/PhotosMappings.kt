@@ -5,6 +5,8 @@ import com.android.photo.feature_photos_list_impl.domain.Photo
 
 internal fun PhotoResponse.toDomain(): Photo {
     return Photo(
-        id = id
+        id = id,
+        secret = secret,
+        server = server
     )
 }

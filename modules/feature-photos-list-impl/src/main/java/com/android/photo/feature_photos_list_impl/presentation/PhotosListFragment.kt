@@ -1,9 +1,12 @@
 package com.android.photo.feature_photos_list_impl.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.GridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.android.photo.picker.R
 import com.android.photo.picker.databinding.FragmentPhotosListBinding
@@ -20,14 +23,20 @@ internal class PhotosListFragment : Fragment(R.layout.fragment_photos_list) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.state.collectOnResumed(::render)
+
         with(binding) {
             rvPhotos.adapter = photosAdapter
+            rvPhotos.layoutManager = GridLayoutManager(requireContext(), 2)
         }
     }
 
     private fun render(state: PhotosListState) {
+        Log.e("asdf", "render: ${state}")
+        photosAdapter.submitList(state.photos)
         with(binding) {
-            photosAdapter.submitList(state.photos)
+            rvPhotos.isVisible = !state.isLoading
+            loader.isVisible = state.isLoading
         }
     }
 }

@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.PhotoPicker" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+<!--        <item name="colorPrimary">@color/violet_80</item>-->
+<!--        <item name="colorPrimaryVariant">@color/light_100</item>-->
+<!--        <item name="colorOnPrimary">@color/violet_100</item>-->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 
-    <style name="Theme.PhotoPicker" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.AppSplash" parent="Theme.SplashScreen">
+<!--        <item name="windowSplashScreenBackground">@color/violet_100</item>-->
+<!--        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_content</item>-->
+<!--        <item name="postSplashScreenTheme">@style/Theme.Montra</item>-->
+    </style>
 </resources>

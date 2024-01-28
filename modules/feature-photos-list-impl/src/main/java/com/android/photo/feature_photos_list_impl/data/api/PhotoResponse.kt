@@ -1,6 +1,9 @@
 package com.android.photo.feature_photos_list_impl.data.api
 
-data class PhotoResponse(
+import kotlinx.serialization.Serializable
+
+@Serializable
+internal data class PhotoResponse(
     val farm: Int,
     val id: String,
     val isfamily: Int,

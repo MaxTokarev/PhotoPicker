@@ -5,7 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.android.photo.picker.R
 import com.android.photo.picker.databinding.ItemPhotoBinding
+import com.bumptech.glide.Glide
 
 internal class PhotosDiffUtils : DiffUtil.ItemCallback<PhotoItem>() {
     override fun areItemsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
@@ -40,12 +42,17 @@ internal class PhotosAdapter(
 
         fun bind(item: PhotoItem) {
             with(binding) {
-//                ivPhoto.setImage
+                Glide.with(ivPhoto)
+                    .load(item.imageUrl)
+                    .fallback(R.drawable.ic_image_load_failed)
+                    .centerCrop()
+                    .into(binding.ivPhoto)
             }
         }
     }
 }
 
-data class PhotoItem(
+internal data class PhotoItem(
     val id: String,
+    val imageUrl: String,
 )
