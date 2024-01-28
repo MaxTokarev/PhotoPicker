@@ -3,28 +3,15 @@
 plugins {
     id("convention.android.library")
     id("convention.android.hilt")
-    alias(libs.plugins.kotlin.ksp)
-    alias(libs.plugins.kotlin.serialization)
-    alias(libs.plugins.ktorfit)
-    alias(libs.plugins.sql.delight)
 }
 
 android {
-    namespace = "com.android.photo.picker"
+    namespace = "com.android.photo.detail"
     buildFeatures.viewBinding = true
 }
 
-sqldelight {
-    databases {
-        create("PhotosDatabase") {
-            packageName.set("com.android.photo.picker")
-        }
-    }
-}
-
 dependencies {
-    api(project(":modules:feature-photos-list-api"))
-    implementation(project(":modules:feature-photo-detail-api"))
+    api(project(":modules:feature-photo-detail-api"))
     implementation(libs.constraint)
     implementation(libs.material)
     implementation(libs.ktx.fragment)
@@ -41,5 +28,4 @@ dependencies {
     implementation(libs.ktor.serialization)
     implementation(libs.ktor.negotiation)
     implementation(libs.ktorfit.lib)
-    ksp(libs.ktorfit.ksp)
 }

@@ -1,5 +1,11 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":modules:feature-photo-detail-impl")
+
+
+include(":modules:feature-photo-detail-api")
+
+
 enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 

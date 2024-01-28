@@ -2,9 +2,11 @@ package com.android.photo.feature_photos_list_impl.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.android.photo.feature_photo_detail_api.FeaturePhotoDetailApi
 import com.android.photo.feature_photos_list_impl.domain.GetPhotosUseCase
 import com.android.photo.feature_photos_list_impl.domain.Photo
 import com.android.photo.picker.R
+import com.github.terrakok.cicerone.Router
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
@@ -22,7 +24,9 @@ import javax.inject.Inject
 @HiltViewModel
 internal class PhotosListViewModel @Inject constructor(
     private val getPhotosUseCase: GetPhotosUseCase,
-    private val urlFormatter: PhotoUrlFormatter
+    private val urlFormatter: PhotoUrlFormatter,
+    private val router: Router,
+    private val detailApi: FeaturePhotoDetailApi
 ) : ViewModel() {
 
     private val _state = MutableStateFlow(value = PhotosListState())
@@ -52,6 +56,6 @@ internal class PhotosListViewModel @Inject constructor(
     }
 
     fun onPhotoClicked(position: Int) {
-        // todo setup logic
+        router.navigateTo(detailApi.screen(state.value.photos[position].imageUrl))
     }
 }

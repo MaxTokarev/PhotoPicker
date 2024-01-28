@@ -2,6 +2,7 @@ package com.android.photo.feature_photos_list_impl.presentation
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
@@ -9,7 +10,8 @@ import com.android.photo.picker.R
 import com.android.photo.picker.databinding.ItemPhotoBinding
 import com.bumptech.glide.Glide
 
-internal class PhotosDiffUtils : DiffUtil.ItemCallback<PhotoItem>() {
+internal class PhotosDiffUtils :
+    DiffUtil.ItemCallback<PhotoItem>() {
     override fun areItemsTheSame(oldItem: PhotoItem, newItem: PhotoItem): Boolean {
         return oldItem.id == newItem.id
     }

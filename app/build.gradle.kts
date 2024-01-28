@@ -9,6 +9,7 @@ android {
 
 dependencies {
     implementation(project(":modules:feature-photos-list-impl"))
+    implementation(project(":modules:feature-photo-detail-impl"))
 
     implementation(libs.splashScreen)
     implementation(libs.appCompat)

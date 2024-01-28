@@ -54,7 +54,10 @@ kaspresso = "1.5.2"
 detekt = "1.23.0" # https://detekt.dev/docs/gettingstarted/gradle/
 detekt-ruleset-compiler = "0.0.4" # https://github.com/BraisGabin/detekt-compiler-rules/releases
 detekt-ruleset-ktlint = "0.48.0" # https://github.com/pinterest/ktlint/releases
-detekt-ruleset-twitter-compose = "0.0.26" # https://github.com/twitter/compose-rules/releases
+detekt-ruleset-twitter-compose = "0.0.26"
+jetbrains-kotlin-jvm = "1.9.0"
+junit-junit = "4.13.2"
+espresso-core = "3.5.1" # https://github.com/twitter/compose-rules/releases
 
 [libraries]
 # Gradle - Core
@@ -187,6 +190,8 @@ work-ktx = { module = "androidx.work:work-runtime-ktx", version.ref = "work" }
 
 # Dependency Analyzer
 dependency-analysis-gradle = { module = "com.autonomousapps:dependency-analysis-gradle-plugin", version.ref = "dependency-analysis" }
+junit-junit = { group = "junit", name = "junit", version.ref = "junit-junit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 
 
 [plugins]
@@ -200,3 +205,4 @@ hilt = { id = "com.google.dagger.hilt.android", version.ref = "dagger" }
 sql-delight = { id = "app.cash.sqldelight", version.ref = "sql-delight" }
 modules-graph = { id = "com.savvasdalkitsis.module-dependency-graph", version.ref = "modules-graph" }
 ktorfit = { id = "de.jensklingenberg.ktorfit", version.ref = "ktorfit" }
+jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrains-kotlin-jvm" }

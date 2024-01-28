@@ -9,4 +9,5 @@ plugins {
     alias(libs.plugins.hilt) apply false
     id("convention.dependency.analysis")
     id("convention.detekt")
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
